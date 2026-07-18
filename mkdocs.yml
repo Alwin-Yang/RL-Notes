@@ -6,20 +6,9 @@ edit_uri: edit/main/docs/
 theme:
   name: material
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: indigo
-      accent: teal
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      accent: teal
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+    scheme: slate
+    primary: deep purple
+    accent: pink
   features:
     - navigation.tabs
     - navigation.sections
@@ -31,6 +20,7 @@ theme:
 markdown_extensions:
   - admonition
   - attr_list
+  - md_in_html
   - tables
   - toc:
       permalink: true
@@ -41,19 +31,28 @@ markdown_extensions:
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+extra_css:
+  - stylesheets/extra.css
 nav:
   - Home: index.md
   - Foundations:
       - Overview: foundations/index.md
+      - Q&A: foundations/Q&A.md
   - Value-Based RL:
       - Overview: value-based/index.md
+      - Q&A: value-based/Q&A.md
   - Policy Optimization:
       - Overview: policy-optimization/index.md
+      - Q&A: policy-optimization/Q&A.md
   - Actor-Critic:
       - Overview: actor-critic/index.md
+      - Q&A: actor-critic/Q&A.md
   - Advanced Topics:
       - Overview: advanced/index.md
+      - Q&A: advanced/Q&A.md
   - Practice:
       - Overview: practice/index.md
+      - Q&A: practice/Q&A.md
   - References:
       - Reading list: references/index.md
+      - Q&A: references/Q&A.md
