@@ -9,15 +9,3 @@ Living notes on reinforcement learning: ideas, equations, algorithms, and implem
 3. [Advanced topics](advanced/index.md): model-based, offline, and safe RL.
 4. [Practice](practice/index.md): experiments and implementation lessons.
 
-## Note template
-
-```md
-# Algorithm name
-
-## Problem and intuition
-## Objective
-## Algorithm
-## Practical details
-## Failure modes
-## References
-```
