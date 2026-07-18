@@ -47,6 +47,7 @@ nav:
   - Policy Optimization:
       - Overview: policy-optimization/index.md
       - Policy Improvement: policy-optimization/policy-improvement.md
+      - Off-policy Learning: policy-optimization/off-policy.md
       - Q&A: policy-optimization/q-and-a.md
   - Actor-Critic:
       - Overview: actor-critic/index.md

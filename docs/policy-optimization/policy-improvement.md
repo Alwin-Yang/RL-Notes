@@ -32,7 +32,7 @@ $$
 - **Variance:** Lower while the estimator remains unbiased.
 - **Intuition:** Only rewards received after an action are credited to that action.
 
-## Key difference
+### Key difference
 
 The key difference is the placement and scope of the summations. REINFORCE multiplies the sum of all log-policy gradients by one shared total return. Reward-to-go instead assigns each time step its own future return starting from that time step.
 
@@ -129,15 +129,16 @@ This is especially important when the baseline is produced by a learned value
 network: the actor loss should not update the critic through
 $b(\mathbf{s}_{i,t})$. The critic is instead trained with its own value loss.
 
----
----
 
-## 中文版本
+
 
 ---
-### REINFORCE 与 Reward-to-go
+# 中文版本
 
-#### REINFORCE
+---
+## REINFORCE 与 Reward-to-go
+
+### REINFORCE
 
 $$
 \nabla_\theta J(\theta)
@@ -152,7 +153,7 @@ $$
 - **方差：**较高。
 - **直觉：**团队赢了之后平分奖金，不区分每个人何时作出贡献。
 
-#### Reward-to-go（因果性技巧）
+### Reward-to-go（因果性技巧）
 
 $$
 \nabla_\theta J(\theta)
