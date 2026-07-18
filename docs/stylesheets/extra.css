@@ -85,7 +85,7 @@
   content: "Q";
   background: #8be9fd;
   border-radius: 50%;
-  color: var(--md-primary-bg-color);
+  color: #21222c;
   font-size: .7rem;
   font-weight: 700;
   line-height: 1.5rem;
@@ -111,4 +111,20 @@
 
 .md-typeset a {
   color: #bd93f9;
+}
+/* Material navigation needs an explicit override for the active item. */
+.md-tabs .md-tabs__link--active,
+.md-tabs .md-tabs__link:hover,
+.md-tabs .md-tabs__link:focus,
+.md-sidebar .md-nav__link--active,
+.md-sidebar .md-nav__link:hover,
+.md-sidebar .md-nav__link:focus {
+  color: #ff79c6 !important;
+}
+/* Current page: apply pink to the link and its text, not only its container. */
+.md-nav__item--active > .md-nav__link,
+.md-nav__item--active > .md-nav__link .md-ellipsis,
+.md-nav__link--active .md-ellipsis,
+.md-tabs__link--active .md-ellipsis {
+  color: #ff79c6 !important;
 }
