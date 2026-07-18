@@ -9,7 +9,10 @@ Because we want to maximize the expected return, and gradient ascent is a method
 
 ## Why are policy gradients high variance?
 
-They estimate expected return from sampled trajectories, whose rewards and actions can vary substantially.
+- Policy-gradient estimates are computed from a finite number of sampled trajectories.
+- Actions, state transitions, and rewards can all be stochastic, so trajectories may differ substantially.
+- The gradient is weighted by noisy, long-horizon returns, which amplifies sampling noise and makes credit assignment difficult.
+- Sparse or large-scale rewards can further increase the variance.
 
 
 

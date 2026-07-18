@@ -169,8 +169,7 @@
 }
 
 .md-sidebar--primary .md-nav__link--active {
-  background: #ff79c61f;
-  box-shadow: inset 2px 0 0 #ff79c6;
+  background: #44475a;
 }
 
 .md-typeset h1 {
