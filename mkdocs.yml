@@ -3,6 +3,7 @@ site_description: Reinforcement learning notes, from foundations to practice.
 repo_name: Alwin-Yang/RL-Notes
 repo_url: https://github.com/Alwin-Yang/RL-Notes
 edit_uri: edit/main/docs/
+copyright: Copyright &copy; 2026 Zewen Yang
 theme:
   name: material
   palette:
