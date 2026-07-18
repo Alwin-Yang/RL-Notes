@@ -4,13 +4,116 @@ Policy methods optimize a parameterised policy directly and work naturally with 
 
 ## 1. Define the policy objective
 
-$$J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta}[G(\tau)].$$
+$$
+J(\theta)
+=\mathbb{E}_{\tau \sim p_\theta}
+\left[\sum_{t=1}^{T}r(s_t,a_t)\right].
+$$
 
 The objective is the expected return over trajectories sampled from the current policy. Policy optimization therefore performs gradient ascent on $J(\theta)$.
 
 ## 2. Estimate the policy gradient
 
-Because the expectation cannot usually be computed exactly, REINFORCE samples trajectories and uses their returns to estimate $\nabla_\theta J(\theta)$.
+### Log-derivative trick
+
+Writing the expectation as an integral gives
+
+$$
+J(\theta)
+=\int p_\theta(\tau)
+\left(\sum_{t=1}^{T}r(s_t,a_t)\right)d\tau.
+$$
+
+Assuming the reward function does not depend directly on $\theta$, differentiate the trajectory distribution:
+
+$$
+\begin{aligned}
+\nabla_\theta J(\theta)
+&=\int \nabla_\theta p_\theta(\tau)
+\left(\sum_{t=1}^{T}r(s_t,a_t)\right)d\tau\\
+&=\int p_\theta(\tau)
+\nabla_\theta\log p_\theta(\tau)
+\left(\sum_{t=1}^{T}r(s_t,a_t)\right)d\tau\\
+&=\mathbb{E}_{\tau\sim p_\theta}
+\left[\nabla_\theta\log p_\theta(\tau)
+\left(\sum_{t=1}^{T}r(s_t,a_t)\right)\right].
+\end{aligned}
+$$
+
+The second line uses the **log-derivative identity**, also called the **score-function identity**. For any $x$ with $p_\theta(x)>0$, apply the chain rule to the logarithm:
+
+$$
+\nabla_\theta\log p_\theta(x)
+=\frac{1}{p_\theta(x)}\nabla_\theta p_\theta(x).
+$$
+
+Multiplying both sides by $p_\theta(x)$ gives
+
+$$
+\boxed{
+\nabla_\theta p_\theta(x)
+=p_\theta(x)\nabla_\theta\log p_\theta(x)
+}.
+$$
+
+This identity is useful because it replaces the derivative of a probability distribution with the distribution itself multiplied by a log-probability gradient. An integral of the form
+
+$$
+\int \nabla_\theta p_\theta(x)f(x)\,dx
+$$
+
+can therefore be rewritten as an expectation:
+
+$$
+\begin{aligned}
+\int \nabla_\theta p_\theta(x)f(x)\,dx
+&=\int p_\theta(x)
+\nabla_\theta\log p_\theta(x)f(x)\,dx\\
+&=\mathbb{E}_{x\sim p_\theta}
+\left[\nabla_\theta\log p_\theta(x)f(x)\right].
+\end{aligned}
+$$
+
+The expectation can then be estimated using samples from $p_\theta$, even when the integral cannot be evaluated analytically. In policy optimization, $x$ is an entire trajectory, $p_\theta(x)$ is its probability under the current policy, and $f(x)$ is the trajectory's reward sum.
+
+For a trajectory $\tau=(s_1,a_1,\ldots,s_T,a_T,s_{T+1})$,
+
+$$
+p_\theta(\tau)
+=\rho_0(s_1)\prod_{t=1}^{T}
+\pi_\theta(a_t\mid s_t)
+P(s_{t+1}\mid s_t,a_t).
+$$
+
+The initial-state distribution $\rho_0$ and environment transition distribution $P$ do not depend on the policy parameters. Their gradients are therefore zero, leaving only the policy terms:
+
+$$
+\nabla_\theta\log p_\theta(\tau)
+=\sum_{t=1}^{T}\nabla_\theta
+\log\pi_\theta(a_t\mid s_t).
+$$
+
+Substituting this result into the objective gradient gives the trajectory-level policy-gradient formula:
+
+$$
+\nabla_\theta J(\theta)
+=\mathbb{E}_{\tau\sim p_\theta}
+\left[
+\left(\sum_{t=1}^{T}\nabla_\theta
+\log\pi_\theta(a_t\mid s_t)\right)
+\left(\sum_{t'=1}^{T}r(s_{t'},a_{t'})\right)
+\right].
+$$
+
+Because this expectation cannot usually be computed exactly, REINFORCE estimates it with $N$ sampled trajectories:
+
+$$
+\nabla_\theta J(\theta)
+\approx \frac{1}{N}\sum_{i=1}^{N}
+\left(\sum_{t=1}^{T}\nabla_\theta
+\log\pi_\theta(a_{i,t}\mid s_{i,t})\right)
+\left(\sum_{t'=1}^{T}r(s_{i,t'},a_{i,t'})\right).
+$$
 
 This estimate is unbiased but can have high variance: both the policy and the environment may be stochastic, so different trajectories can produce very different returns.
 

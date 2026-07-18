@@ -189,6 +189,10 @@
   color: #8be9fd;
 }
 
+.md-typeset h3 {
+  color: #50fa7b;
+}
+
 .md-typeset a {
   text-decoration-color: transparent;
   text-underline-offset: .15em;
