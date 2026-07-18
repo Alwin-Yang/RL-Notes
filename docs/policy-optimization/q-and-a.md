@@ -1,6 +1,6 @@
 # Policy Optimization Q&A
-<div class="qa-list" markdown>
 
+<div class="qa-list" markdown>
 
 ## Why policy optimization use gradient ascent?
 

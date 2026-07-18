@@ -1,4 +1,5 @@
 # Actor-Critic Q&A
+
 <div class="qa-list" markdown>
 
 ## What is the critic for?

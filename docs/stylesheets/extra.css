@@ -86,8 +86,10 @@
   background: #6272a4;
   border-radius: 50%;
   color: #f8f8f2;
+  flex: 0 0 1.5rem;
   font-size: .7rem;
   font-weight: 700;
+  height: 1.5rem;
   line-height: 1.5rem;
   margin-right: .65rem;
   text-align: center;

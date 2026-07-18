@@ -40,22 +40,23 @@ nav:
   - Home: index.md
   - Foundations:
       - Overview: foundations/index.md
-      - Q&A: foundations/Q&A.md
+      - Q&A: foundations/q-and-a.md
   - Value-Based RL:
       - Overview: value-based/index.md
-      - Q&A: value-based/Q&A.md
+      - Q&A: value-based/q-and-a.md
   - Policy Optimization:
       - Overview: policy-optimization/index.md
-      - Q&A: policy-optimization/Q&A.md
+      - Policy Improvement: policy-optimization/policy-improvement.md
+      - Q&A: policy-optimization/q-and-a.md
   - Actor-Critic:
       - Overview: actor-critic/index.md
-      - Q&A: actor-critic/Q&A.md
+      - Q&A: actor-critic/q-and-a.md
   - Advanced Topics:
       - Overview: advanced/index.md
-      - Q&A: advanced/Q&A.md
+      - Q&A: advanced/q-and-a.md
   - Practice:
       - Overview: practice/index.md
-      - Q&A: practice/Q&A.md
+      - Q&A: practice/q-and-a.md
   - References:
       - Reading list: references/index.md
-      - Q&A: references/Q&A.md
+      - Q&A: references/q-and-a.md
