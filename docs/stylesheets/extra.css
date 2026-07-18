@@ -101,6 +101,11 @@
   margin: 0;
   padding: 1rem;
 }
+
+.md-typeset .qa-list h2 + :is(ul, ol) {
+  margin-inline: 0;
+}
+
 .md-header__button:hover,
 .md-nav__link:hover,
 .md-nav__link--active,
