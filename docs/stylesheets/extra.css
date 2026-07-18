@@ -83,9 +83,9 @@
 
 .qa-list h2::before {
   content: "Q";
-  background: #8be9fd;
+  background: #6272a4;
   border-radius: 50%;
-  color: #21222c;
+  color: #f8f8f2;
   font-size: .7rem;
   font-weight: 700;
   line-height: 1.5rem;
@@ -114,6 +114,7 @@
 }
 /* Material navigation needs an explicit override for the active item. */
 .md-tabs .md-tabs__link--active,
+.md-tabs__item--active > .md-tabs__link,
 .md-tabs .md-tabs__link:hover,
 .md-tabs .md-tabs__link:focus,
 .md-sidebar .md-nav__link--active,
@@ -125,6 +126,7 @@
 .md-nav__item--active > .md-nav__link,
 .md-nav__item--active > .md-nav__link .md-ellipsis,
 .md-nav__link--active .md-ellipsis,
+.md-tabs__item--active > .md-tabs__link .md-ellipsis,
 .md-tabs__link--active .md-ellipsis {
   color: #ff79c6 !important;
 }
