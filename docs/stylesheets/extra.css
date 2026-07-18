@@ -25,6 +25,31 @@
   border: 1px solid #44475a;
 }
 
+/* Keep navigation darker than the document surface. */
+.md-header,
+.md-tabs {
+  background-color: #21222c;
+}
+
+.md-header__button,
+.md-header__topic,
+.md-tabs__link {
+  color: #f8f8f2;
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  color: #8be9fd;
+}
+
+.md-search__form {
+  background-color: #44475a;
+}
+
+.md-search__input::placeholder {
+  color: #b8b8c2;
+}
+
 .qa-list h2 {
   align-items: center;
   background: color-mix(in srgb, var(--md-primary-fg-color) 12%, transparent);
