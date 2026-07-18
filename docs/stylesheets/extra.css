@@ -25,10 +25,32 @@
   border: 1px solid #44475a;
 }
 
-/* Keep navigation darker than the document surface. */
+/* Compact, deep-purple navigation. */
+:root {
+  --md-header-height: 2.35rem;
+}
+
 .md-header,
 .md-tabs {
-  background-color: #21222c;
+  background-color: #30243f;
+}
+
+.md-header__inner {
+  height: 2.35rem;
+}
+
+.md-tabs,
+.md-tabs__list {
+  height: 2rem;
+}
+
+.md-tabs__link {
+  margin-top: .45rem;
+}
+
+.md-search__form {
+  background-color: #44475a;
+  min-height: 1.85rem;
 }
 
 .md-header__button,
@@ -40,10 +62,6 @@
 .md-tabs__link--active,
 .md-tabs__link:hover {
   color: #8be9fd;
-}
-
-.md-search__form {
-  background-color: #44475a;
 }
 
 .md-search__input::placeholder {
