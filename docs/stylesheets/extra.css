@@ -154,7 +154,6 @@
 .md-tabs__link:hover,
 .md-tabs__link:focus,
 .md-tabs__item--active > .md-tabs__link {
-  box-shadow: inset 0 -2px 0 #ff79c6;
   opacity: 1;
 }
 
@@ -212,4 +211,15 @@
   background: #21222c;
   box-shadow: 0 .35rem .8rem #191a213d;
   line-height: 1.65;
+}
+
+@media screen and (min-width: 60em) {
+  .md-content__inner {
+    background: #21222c;
+    border: 1px solid #44475a;
+    border-radius: .65rem;
+    box-shadow: 0 .3rem .8rem #191a2126;
+    margin-top: 1rem;
+    padding: 1.5rem 1.75rem;
+  }
 }
