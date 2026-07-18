@@ -1,0 +1,59 @@
+site_name: RL Notes
+site_description: Reinforcement learning notes, from foundations to practice.
+repo_name: Alwin-Yang/RL-Notes
+repo_url: https://github.com/Alwin-Yang/RL-Notes
+edit_uri: edit/main/docs/
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences
+  - pymdownx.highlight
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+nav:
+  - Home: index.md
+  - Foundations:
+      - Overview: foundations/index.md
+  - Value-Based RL:
+      - Overview: value-based/index.md
+  - Policy Optimization:
+      - Overview: policy-optimization/index.md
+  - Actor-Critic:
+      - Overview: actor-critic/index.md
+  - Advanced Topics:
+      - Overview: advanced/index.md
+  - Practice:
+      - Overview: practice/index.md
+  - References:
+      - Reading list: references/index.md
