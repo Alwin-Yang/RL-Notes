@@ -1,0 +1,14 @@
+[project]
+name = "rl-notes"
+version = "0.1.0"
+description = "Reinforcement learning notes documentation"
+requires-python = ">=3.10"
+dependencies = []
+
+[dependency-groups]
+docs = [
+    "mkdocs-material>=9.7.7,<10",
+]
+
+[tool.uv]
+package = false
