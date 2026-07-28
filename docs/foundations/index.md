@@ -11,6 +11,12 @@ An MDP is $\langle \mathcal{S}, \mathcal{A}, P, R, \gamma \rangle$: states, acti
 
 Repeated Bellman backups under a known environment model.
 
+## Estimators
+
+Every quantity an RL algorithm needs is estimated from samples, so it helps to
+know when an estimate is right on average and when it is not. See
+[Bias and Variance](bias-and-variance.md).
+
 ### Notes to add
 
 - Returns, policies, and value functions

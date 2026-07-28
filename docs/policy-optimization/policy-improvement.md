@@ -1,5 +1,9 @@
 # Policy Improvement
 
+The formulas on this page are written without a discount factor, which keeps the
+sums short. Every result also holds with discounting: insert $\gamma^{t'-t}$
+into each return, as the [Actor-Critic](../actor-critic/index.md) page does.
+
 ---
 ## REINFORCE vs Reward-to-go
 
@@ -9,7 +13,7 @@ $$
 \nabla_\theta J(\theta)
 \approx \frac{1}{N}\sum_{i=1}^{N}
 \left(\sum_{t=1}^{T}\nabla_\theta
-\log \pi_\theta(\mathbf{a}_{i,t}\vert\mathbf{s}_{i,t})\right)
+\log \pi_\theta(\mathbf{a}_{i,t}\mid\mathbf{s}_{i,t})\right)
 \left(\sum_{t=1}^{T}r(\mathbf{s}_{i,t},\mathbf{a}_{i,t})\right)
 $$
 
@@ -23,7 +27,7 @@ $$
 $$
 \nabla_\theta J(\theta)
 \approx \frac{1}{N}\sum_{i=1}^{N}\sum_{t=1}^{T}
-\nabla_\theta \log \pi_\theta(\mathbf{a}_{i,t}\vert\mathbf{s}_{i,t})
+\nabla_\theta \log \pi_\theta(\mathbf{a}_{i,t}\mid\mathbf{s}_{i,t})
 \left(\sum_{t'=t}^{T}r(\mathbf{s}_{i,t'},\mathbf{a}_{i,t'})\right)
 $$
 
@@ -47,7 +51,7 @@ Reward-to-go removes rewards that an action could not have caused, but the remai
 $$
 \nabla_\theta J(\theta)
 \approx \frac{1}{N}\sum_{i=1}^{N}\sum_{t=1}^{T}
-\nabla_\theta \log \pi_\theta(\mathbf{a}_{i,t}\vert\mathbf{s}_{i,t})
+\nabla_\theta \log \pi_\theta(\mathbf{a}_{i,t}\mid\mathbf{s}_{i,t})
 \left(G_{i,t}-b(\mathbf{s}_{i,t})\right),
 $$
 
@@ -65,6 +69,9 @@ $$
 &=b(s)\nabla_\theta 1=0.
 \end{aligned}
 $$
+
+The sums run over a discrete action space; for continuous actions they become
+integrals over $\mathcal{A}$ and every step of the argument is unchanged.
 
 Therefore, the $-b(s)$ term is valid: its expectation is zero, so subtracting it preserves unbiasedness. Adding it would also preserve unbiasedness, but subtraction with a well-chosen baseline centers the return and reduces variance.
 
@@ -135,6 +142,10 @@ $b(\mathbf{s}_{i,t})$. The critic is instead trained with its own value loss.
 ---
 # 中文版本
 
+本页公式默认不带 discount factor，这样求和更简洁。带折扣的情形结论相同：在每个
+回报中插入 $\gamma^{t'-t}$ 即可，如 [Actor-Critic](../actor-critic/index.md)
+页面所写。
+
 ---
 ## REINFORCE 与 Reward-to-go
 
@@ -144,7 +155,7 @@ $$
 \nabla_\theta J(\theta)
 \approx \frac{1}{N}\sum_{i=1}^{N}
 \left(\sum_{t=1}^{T}\nabla_\theta
-\log \pi_\theta(\mathbf{a}_{i,t}\vert\mathbf{s}_{i,t})\right)
+\log \pi_\theta(\mathbf{a}_{i,t}\mid\mathbf{s}_{i,t})\right)
 \left(\sum_{t=1}^{T}r(\mathbf{s}_{i,t},\mathbf{a}_{i,t})\right)
 $$
 
@@ -158,7 +169,7 @@ $$
 $$
 \nabla_\theta J(\theta)
 \approx \frac{1}{N}\sum_{i=1}^{N}\sum_{t=1}^{T}
-\nabla_\theta \log \pi_\theta(\mathbf{a}_{i,t}\vert\mathbf{s}_{i,t})
+\nabla_\theta \log \pi_\theta(\mathbf{a}_{i,t}\mid\mathbf{s}_{i,t})
 \left(\sum_{t'=t}^{T}r(\mathbf{s}_{i,t'},\mathbf{a}_{i,t'})\right)
 $$
 
@@ -181,7 +192,7 @@ Reward-to-go 去掉了动作不可能影响的历史奖励，但剩余回报在�
 $$
 \nabla_\theta J(\theta)
 \approx \frac{1}{N}\sum_{i=1}^{N}\sum_{t=1}^{T}
-\nabla_\theta \log \pi_\theta(\mathbf{a}_{i,t}\vert\mathbf{s}_{i,t})
+\nabla_\theta \log \pi_\theta(\mathbf{a}_{i,t}\mid\mathbf{s}_{i,t})
 \left(G_{i,t}-b(\mathbf{s}_{i,t})\right),
 $$
 
@@ -199,6 +210,9 @@ $$
 &=b(s)\nabla_\theta 1=0.
 \end{aligned}
 $$
+
+上面的求和针对离散动作空间；对连续动作，把求和换成对 $\mathcal{A}$ 的积分，
+推导的每一步都不变。
 
 因此，写成 $-b(s)$ 是正确的：baseline 项的期望为 0，减去它不会引入偏差。加上它同样不会引入偏差，但使用减法并选择合适的 baseline，可以让回报以其平均水平为中心，从而降低方差。
 

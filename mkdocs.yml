@@ -40,6 +40,7 @@ nav:
   - Home: index.md
   - Foundations:
       - Overview: foundations/index.md
+      - Bias and Variance: foundations/bias-and-variance.md
       - Q&A: foundations/q-and-a.md
   - Value-Based RL:
       - Overview: value-based/index.md
@@ -51,6 +52,8 @@ nav:
       - Q&A: policy-optimization/q-and-a.md
   - Actor-Critic:
       - Overview: actor-critic/index.md
+      - A2C / A3C: actor-critic/a2c-a3c.md
+      - Soft Actor-Critic: actor-critic/sac.md
       - Q&A: actor-critic/q-and-a.md
   - Advanced Topics:
       - Overview: advanced/index.md

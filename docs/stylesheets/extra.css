@@ -187,10 +187,22 @@
 
 .md-typeset h2 {
   color: #8be9fd;
+  font-weight: 400;
 }
 
 .md-typeset h3 {
   color: #50fa7b;
+  font-weight: 300;
+}
+
+/* Bold marks terms and key words, so let it carry the accent colour too. */
+.md-typeset strong {
+  color: var(--md-accent-fg-color);
+}
+
+/* Inline accent colour, applied with attr_list: **text**{ .accent }. */
+.md-typeset .accent {
+  color: var(--md-accent-fg-color);
 }
 
 .md-typeset a {

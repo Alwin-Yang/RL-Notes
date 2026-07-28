@@ -95,8 +95,8 @@ $$
 $$
 
 is the one-step importance ratio. Therefore, with
-$R(\tau)=\sum_{t=1}^{T}\gamma^{t-1}r_t$, the target policy's expected return
-can be written using behavior-policy trajectories:
+$R(\tau)=\sum_{t=1}^{T}\gamma^{t-1}r_t$ and $r_t=r(s_t,a_t)$, the target
+policy's expected return can be written using behavior-policy trajectories:
 
 $$
 J(\theta)

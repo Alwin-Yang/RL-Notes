@@ -111,8 +111,8 @@ $$
 \nabla_\theta J(\theta)
 \approx \frac{1}{N}\sum_{i=1}^{N}
 \left(\sum_{t=1}^{T}\nabla_\theta
-\log\pi_\theta(a_{i,t}\mid s_{i,t})\right)
-\left(\sum_{t'=1}^{T}r(s_{i,t'},a_{i,t'})\right).
+\log\pi_\theta(\mathbf{a}_{i,t}\mid\mathbf{s}_{i,t})\right)
+\left(\sum_{t'=1}^{T}r(\mathbf{s}_{i,t'},\mathbf{a}_{i,t'})\right).
 $$
 
 This estimate is unbiased but can have high variance: both the policy and the environment may be stochastic, so different trajectories can produce very different returns.
