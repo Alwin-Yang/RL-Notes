@@ -1,8 +1,14 @@
 # Policy Optimization
 
-Policy methods optimize a parameterised policy directly and work naturally with continuous action spaces.
+Policy optimization directly adjusts the parameters of a policy to increase
+expected return. This page derives the policy gradient, which is the foundation
+for the methods in this section.
 
-## 1. Define the policy objective
+## Define the policy objective
+
+Let $\pi_\theta$ be a policy with parameters $\theta$. A trajectory $\tau$ is
+sampled from the distribution $p_\theta$ induced by that policy and the
+environment. For a trajectory of length $T$, the objective is
 
 $$
 J(\theta)
@@ -10,11 +16,11 @@ J(\theta)
 \left[\sum_{t=1}^{T}r(s_t,a_t)\right].
 $$
 
-The objective is the expected return over trajectories sampled from the current policy. Policy optimization therefore performs gradient ascent on $J(\theta)$.
+Here, $r(s_t,a_t)$ is the reward received after taking action $a_t$ in state
+$s_t$. The objective is the expected return under the current policy. Policy
+optimization therefore performs gradient ascent on $J(\theta)$.
 
-## 2. Estimate the policy gradient
-
-### Log-derivative trick
+## Turn the derivative into an expectation
 
 Writing the expectation as an integral gives
 
@@ -24,7 +30,8 @@ J(\theta)
 \left(\sum_{t=1}^{T}r(s_t,a_t)\right)d\tau.
 $$
 
-Assuming the reward function does not depend directly on $\theta$, differentiate the trajectory distribution:
+Assuming the reward function does not depend directly on $\theta$,
+differentiate the trajectory distribution:
 
 $$
 \begin{aligned}
@@ -40,7 +47,9 @@ $$
 \end{aligned}
 $$
 
-The second line uses the **log-derivative identity**, also called the **score-function identity**. For any $x$ with $p_\theta(x)>0$, apply the chain rule to the logarithm:
+The second line uses the **log-derivative identity**, also called the
+**score-function identity**. For any sample $x$ with $p_\theta(x)>0$, apply the
+chain rule to the logarithm:
 
 $$
 \nabla_\theta\log p_\theta(x)
@@ -56,7 +65,9 @@ $$
 }.
 $$
 
-This identity is useful because it replaces the derivative of a probability distribution with the distribution itself multiplied by a log-probability gradient. An integral of the form
+This identity replaces the derivative of a probability distribution with the
+distribution itself multiplied by a log-probability gradient. An integral of
+the form
 
 $$
 \int \nabla_\theta p_\theta(x)f(x)\,dx
@@ -74,7 +85,12 @@ $$
 \end{aligned}
 $$
 
-The expectation can then be estimated using samples from $p_\theta$, even when the integral cannot be evaluated analytically. In policy optimization, $x$ is an entire trajectory, $p_\theta(x)$ is its probability under the current policy, and $f(x)$ is the trajectory's reward sum.
+The expectation can then be estimated using samples from $p_\theta$, even when
+the integral cannot be evaluated analytically. In policy optimization, $x$ is
+an entire trajectory, $p_\theta(x)$ is its probability under the current
+policy, and $f(x)$ is the trajectory's reward sum.
+
+## Remove the environment dynamics
 
 For a trajectory $\tau=(s_1,a_1,\ldots,s_T,a_T,s_{T+1})$,
 
@@ -85,7 +101,9 @@ p_\theta(\tau)
 P(s_{t+1}\mid s_t,a_t).
 $$
 
-The initial-state distribution $\rho_0$ and environment transition distribution $P$ do not depend on the policy parameters. Their gradients are therefore zero, leaving only the policy terms:
+The initial-state distribution $\rho_0$ and environment transition distribution
+$P$ do not depend on the policy parameters. Their gradients are therefore zero,
+leaving only the policy terms:
 
 $$
 \nabla_\theta\log p_\theta(\tau)
@@ -93,7 +111,8 @@ $$
 \log\pi_\theta(a_t\mid s_t).
 $$
 
-Substituting this result into the objective gradient gives the trajectory-level policy-gradient formula:
+Substituting this result into the objective gradient gives the trajectory-level
+policy-gradient formula:
 
 $$
 \nabla_\theta J(\theta)
@@ -105,7 +124,10 @@ $$
 \right].
 $$
 
-Because this expectation cannot usually be computed exactly, REINFORCE estimates it with $N$ sampled trajectories:
+## Estimate the gradient from trajectories
+
+Because the expectation cannot usually be computed exactly, REINFORCE
+estimates it with $N$ sampled trajectories:
 
 $$
 \nabla_\theta J(\theta)
@@ -115,30 +137,42 @@ $$
 \left(\sum_{t'=1}^{T}r(\mathbf{s}_{i,t'},\mathbf{a}_{i,t'})\right).
 $$
 
-This estimate is unbiased but can have high variance: both the policy and the environment may be stochastic, so different trajectories can produce very different returns.
+This estimate is unbiased but can have high variance. Both the policy and the
+environment may be stochastic, so different trajectories can produce very
+different returns.
 
-## 3. Improve the gradient estimate
+## Where to go next
 
-[Policy-gradient improvements](policy-improvement.md) make learning more stable without changing the expected gradient:
+### Policy improvement
 
-1. **REINFORCE** weights every action in a trajectory by the trajectory's total return.
-2. **Reward-to-go** removes rewards that occurred before an action, using causality to reduce variance.
-3. **A baseline** removes additional variance while keeping the estimator unbiased.
+[Policy Improvement](policy-improvement.md) explains how reward-to-go,
+baselines, and surrogate objectives turn the basic estimator into a more useful
+training objective.
 
-The progression is therefore not a sequence of different objectives; it is a sequence of increasingly useful estimators of the same policy gradient.
+### Off-policy learning
 
-## 4. Constrain the policy update
+[Off-policy Learning](off-policy.md) explains why data from another policy
+requires a correction and derives importance sampling. This provides the
+foundation for understanding how off-policy actor-critic methods reuse data.
 
-PPO constrains policy updates through a clipped surrogate objective.
+### Actor-critic
 
-After estimating the gradient, it is still important to control the update size: a large neural-network update can change the policy sharply and invalidate the data collected by the previous policy.
+[Actor-Critic](actor-critic/index.md) replaces the sampled return or baseline
+with a learned value estimate. It also introduces advantage estimation, TD
+targets, $n$-step returns, and GAE.
 
-## 5. Reuse data from another policy
+The algorithms in this family are:
 
-[Off-policy learning and importance sampling](off-policy.md) explains how a
-likelihood ratio converts an expectation under a target policy into an
-expectation over data generated by a different behavior policy.
+- [A2C and A3C](actor-critic/a2c-a3c.md): direct on-policy actor-critic
+  methods.
+- [TRPO](actor-critic/trpo.md): limits the actor update with a KL-divergence
+  constraint.
+- [PPO](actor-critic/ppo.md): simplifies TRPO's idea with a clipped surrogate
+  objective.
+- [SAC](actor-critic/sac.md): learns off-policy critics and includes an entropy
+  objective.
 
 ## Questions
 
-See the [Policy Optimization Q&A](q-and-a.md) for conceptual questions about gradient ascent, gradient variance, rollout batches, and PPO clipping.
+See the [Policy Optimization Q&A](q-and-a.md) for conceptual questions about
+gradient ascent, gradient variance, rollout batches, and PPO clipping.

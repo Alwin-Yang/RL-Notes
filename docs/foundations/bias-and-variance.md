@@ -58,7 +58,8 @@ because it factors out of the expectation over actions, as shown in
 [Policy Improvement](../policy-optimization/policy-improvement.md). The
 temporal-difference error built from the *true* $V^\pi$ is unbiased for
 $A^\pi$, because the sampled next state enters through the single linear term
-$\gamma V^\pi(s_{t+1})$; see [Actor-Critic](../actor-critic/index.md).
+$\gamma V^\pi(s_{t+1})$; see
+[Actor-Critic](../policy-optimization/actor-critic/index.md).
 
 ## A worked example: estimating a variance
 
@@ -280,7 +281,7 @@ $Q^\pi$ 本来就*被定义*为它的期望。只依赖状态的基线不改变�
 [Policy Improvement](../policy-optimization/policy-improvement.md)。用**真**
 $V^\pi$ 构造的时序差分误差对 $A^\pi$ 无偏，因为采样得到的下一状态只出现在
 $\gamma V^\pi(s_{t+1})$ 这一个线性项里，见
-[Actor-Critic](../actor-critic/index.md)。
+[Actor-Critic](../policy-optimization/actor-critic/index.md)。
 
 ## 完整例子：估计方差
 
