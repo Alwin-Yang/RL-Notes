@@ -2,7 +2,7 @@
 
 The formulas on this page are written without a discount factor, which keeps the
 sums short. Every result also holds with discounting: insert $\gamma^{t'-t}$
-into each return, as the [Actor-Critic](actor-critic/index.md) page does.
+into each return, as the [Actor-Critic](actor-critic.md) page does.
 
 ---
 ## REINFORCE vs Reward-to-go
@@ -143,7 +143,7 @@ $b(\mathbf{s}_{i,t})$. The critic is instead trained with its own value loss.
 # 中文版本
 
 本页公式默认不带 discount factor，这样求和更简洁。带折扣的情形结论相同：在每个
-回报中插入 $\gamma^{t'-t}$ 即可，如 [Actor-Critic](actor-critic/index.md)
+回报中插入 $\gamma^{t'-t}$ 即可，如 [Actor-Critic](actor-critic.md)
 页面所写。
 
 ---

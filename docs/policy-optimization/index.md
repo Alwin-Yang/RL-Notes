@@ -157,20 +157,20 @@ foundation for understanding how off-policy actor-critic methods reuse data.
 
 ### Actor-critic
 
-[Actor-Critic](actor-critic/index.md) replaces the sampled return or baseline
+[Actor-Critic](actor-critic.md) replaces the sampled return or baseline
 with a learned value estimate. It also introduces advantage estimation, TD
 targets, $n$-step returns, and GAE.
 
 The algorithms in this family are:
 
-- [A2C and A3C](actor-critic/a2c-a3c.md): direct on-policy actor-critic
+- [A2C and A3C](a2c-a3c.md): direct on-policy actor-critic
   methods.
-- [TRPO](actor-critic/trpo.md): limits the actor update with a KL-divergence
+- [TRPO](trpo.md): limits the actor update with a KL-divergence
   constraint.
-- [PPO](actor-critic/ppo.md): simplifies TRPO's idea with a clipped surrogate
+- [PPO](ppo.md): simplifies TRPO's idea with a clipped surrogate
   objective.
-- [SAC](actor-critic/sac.md): learns off-policy critics and includes an entropy
-  objective.
+- [SAC](../actor-critic/sac.md): learns off-policy critics and includes an
+  entropy objective.
 
 ## Questions
 

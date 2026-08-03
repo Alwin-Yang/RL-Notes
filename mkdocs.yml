@@ -46,17 +46,19 @@ nav:
       - Overview: policy-optimization/index.md
       - Policy Improvement: policy-optimization/policy-improvement.md
       - Off-policy Learning: policy-optimization/off-policy.md
-      - Actor-Critic:
-          - Overview: policy-optimization/actor-critic/index.md
-          - A2C / A3C: policy-optimization/actor-critic/a2c-a3c.md
-          - TRPO: policy-optimization/actor-critic/trpo.md
-          - PPO: policy-optimization/actor-critic/ppo.md
-          - Soft Actor-Critic: policy-optimization/actor-critic/sac.md
-          - Q&A: policy-optimization/actor-critic/q-and-a.md
+      - Actor-Critic Foundations: policy-optimization/actor-critic.md
+      - A2C / A3C: policy-optimization/a2c-a3c.md
+      - TRPO: policy-optimization/trpo.md
+      - PPO: policy-optimization/ppo.md
+      - Actor-Critic Q&A: policy-optimization/actor-critic-q-and-a.md
       - Q&A: policy-optimization/q-and-a.md
+  - Actor-Critic:
+      - Soft Actor-Critic: actor-critic/sac.md
   - Q-Learning:
       - Overview: q-learning/index.md
       - Deep Q-Networks: q-learning/dqn.md
+      - Double DQN: q-learning/double-dqn.md
+      - N-Step Returns: q-learning/n-step-returns.md
       - Q&A: q-learning/q-and-a.md
   - Advanced Topics:
       - Overview: advanced/index.md
