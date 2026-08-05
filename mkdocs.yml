@@ -60,6 +60,10 @@ nav:
       - Double DQN: q-learning/double-dqn.md
       - N-Step Returns: q-learning/n-step-returns.md
       - Q&A: q-learning/q-and-a.md
+  - Offline RL:
+      - Overview: offline-rl/index.md
+      - Advantage Estimation: offline-rl/advantage-estimation.md
+      - Q&A: offline-rl/q-and-a.md
   - Advanced Topics:
       - Overview: advanced/index.md
       - Q&A: advanced/q-and-a.md

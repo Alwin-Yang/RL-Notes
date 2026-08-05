@@ -1,0 +1,14 @@
+graph LR
+    D["Fixed dataset D"] -->|many examples| A["Supported action"]
+    D -.->|few examples| O["Rare action"]
+    P["Learned policy πθ"] -->|selects| O
+    A -->|strong evidence| R["Q(s, a) more reliable"]
+    O -->|weak evidence| U["Q(s, a) may be wrong"]
+
+    classDef dataset fill:#e8f1ff,stroke:#3b6fb6,color:#152238
+    classDef supported fill:#e8f7ee,stroke:#3f8f5f,color:#173a25
+    classDef ood fill:#fff0f0,stroke:#c94c4c,color:#5a1f1f
+
+    class D,P dataset
+    class A,R supported
+    class O,U ood

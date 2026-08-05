@@ -15,5 +15,8 @@ implementation lessons.
 4. [Actor-critic](actor-critic/sac.md): methods that combine an explicit actor
    with a learned critic. SAC currently connects policy optimization with
    Q-learning.
-5. [Advanced topics](advanced/index.md): model-based, offline, and safe RL.
-6. [Practice](practice/index.md): experiments and implementation lessons.
+5. [Offline RL](offline-rl/index.md): learning from fixed datasets through
+   behavior regularization, conservative value learning, and offline policy
+   evaluation.
+6. [Advanced topics](advanced/index.md): model-based and safe RL.
+7. [Practice](practice/index.md): experiments and implementation lessons.

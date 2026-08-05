@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 740"
+     role="img" aria-labelledby="title desc">
+  <title id="title">Action distributions and estimated Q-values</title>
+  <desc id="desc">The learned policy selects an action with little dataset
+  support. The critic extrapolates there and may overestimate its value.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#536273"/>
+    </marker>
+    <style>
+      .axis{stroke:#536273;stroke-width:2}.text{fill:#263442;font-family:system-ui,sans-serif}
+      .label{font-size:19px}.small{font-size:16px}.blue{stroke:#2d65aa;fill:#3977c3}
+      .red{stroke:#bd4444;fill:#d55757}.green{stroke:#3f8f5f;fill:none}
+    </style>
+  </defs>
+  <rect width="960" height="740" fill="white"/>
+  <text x="480" y="36" text-anchor="middle" class="text label"
+        font-weight="650">Distribution shift and Q-value extrapolation</text>
+
+  <!-- The selected OOD action is aligned across both panels. -->
+  <rect x="680" y="100" width="145" height="570" fill="#d55757" opacity=".055"/>
+  <line x1="747" y1="150" x2="747" y2="670" stroke="#bd4444"
+        stroke-width="2.5" stroke-dasharray="7 6"/>
+
+  <!-- Action distributions. -->
+  <path d="M86 340H914 M86 340V72" class="axis" fill="none"/>
+  <text x="26" y="210" text-anchor="middle" class="text label"
+        transform="rotate(-90 26 210)">Action density</text>
+  <path d="M95 339 C190 337 250 285 300 185 C340 105 405 105 450 190
+           C505 295 545 337 635 339 L95 339Z"
+        class="blue" fill-opacity=".22" stroke-width="3"/>
+  <path d="M485 339 C605 338 660 292 700 200 C730 130 780 132 815 205
+           C855 292 875 337 914 339 L485 339Z"
+        class="red" fill-opacity=".22" stroke-width="3"/>
+  <text x="230" y="105" class="text label" fill="#2d65aa">Dataset μ(a|s)</text>
+  <text x="690" y="125" class="text label" fill="#bd4444">Policy πθ(a|s)</text>
+  <line x1="385" y1="78" x2="710" y2="78" stroke="#536273" stroke-width="2"
+        marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="548" y="66" text-anchor="middle" class="text small">distribution shift</text>
+  <circle cx="747" cy="340" r="7" fill="#bd4444"/>
+  <text x="747" y="370" text-anchor="middle" class="text small"
+        fill="#8f3030">action selected by πθ</text>
+
+  <!-- Estimated Q-value over the same action axis. -->
+  <path d="M86 670H914 M86 670V420" class="axis" fill="none"/>
+  <text x="26" y="545" text-anchor="middle" class="text label"
+        transform="rotate(-90 26 545)">Estimated Q(s, a)</text>
+  <text x="500" y="715" text-anchor="middle" class="text label">Action a</text>
+
+  <path d="M105 620 C205 595 290 555 375 575 C465 596 525 545 610 565"
+        class="green" stroke-width="4"/>
+  <path d="M610 530 C680 470 720 420 747 415 C800 405 855 495 914 535
+           L914 655 C850 635 800 600 747 585 C705 575 665 605 610 620Z"
+        fill="#d55757" opacity=".13"/>
+  <path d="M610 565 C670 535 710 475 747 452 C800 420 850 535 914 580"
+        fill="none" stroke="#bd4444" stroke-width="4" stroke-dasharray="10 8"/>
+  <text x="190" y="520" class="text label" fill="#34794f">Critic Qφ(s, a)</text>
+  <text x="180" y="650" class="text small" fill="#34794f">solid: data-supported</text>
+  <text x="750" y="650" class="text small" fill="#9b3535">dashed: extrapolated</text>
+  <circle cx="747" cy="452" r="8" fill="#bd4444"/>
+  <rect x="535" y="390" width="230" height="57" rx="8"
+        fill="#fff4f4" stroke="#d55757" stroke-width="1.5"/>
+  <text x="650" y="414" text-anchor="middle" class="text small" fill="#7d2929">
+    High predicted Q,
+  </text>
+  <text x="650" y="436" text-anchor="middle" class="text small" fill="#7d2929">
+    but weak data support
+  </text>
+  <line x1="731" y1="442" x2="742" y2="450" stroke="#bd4444"
+        stroke-width="2" marker-end="url(#arrow)"/>
+</svg>
